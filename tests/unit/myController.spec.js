@@ -1,12 +1,15 @@
 describe('myController', function () {
-  var $controller;
+  var createController, scope;
   beforeEach(module('myApp'));
-  beforeEach(inject(function (_$controller_) {
-    $controller = _$controller_;
+  beforeEach(inject(function ($controller, $rootScope) {
+    scope = $rootScope.$new();
+    $controller('myController as mc', {
+      $scope: scope
+    });
   }));
-  describe('defined', function () {
-    it('should be defined', function () {
-      expect($controller).toBeDefined();
+  describe('Defined', function () {
+    it('should have name', function () {
+      expect(scope.mc.name).toEqual('hello world!');
     });
   });
 });
