@@ -1,19 +1,10 @@
 (function () {
   'use strict';
   var tokenConfig = function ($httpProvider) {
-    $httpProvider.interceptors.push('TokenService');
+    $httpProvider.interceptors.push('OAuth');
   };
   tokenConfig.$inject = ['$httpProvider'];
 
-  function oauthCtrl ($http) {
-    var x;
-    $http.get('http://jsonplaceholder.typicode.com/posts').then(function (data) {
-      x = data;
-    });
-    console.log(x);
-  }
-
   angular.module('app.oauth', [])
-    .config(tokenConfig)
-    .controller('oauthCtrl', oauthCtrl);
+    .config(tokenConfig);
 }());

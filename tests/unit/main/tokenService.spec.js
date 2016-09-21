@@ -1,19 +1,19 @@
 (function () {
   'use strict';
   describe('token service', function () {
-    var TokenService;
+    var OAuthToken;
     beforeEach(module('app.oauth'));
-    beforeEach(inject(function (_TokenService_) {
-      TokenService = _TokenService_;
+    beforeEach(inject(function (_OAuthToken_) {
+      OAuthToken = _OAuthToken_;
     })
     );
     it('should set a token ', function () {
-      TokenService.setToken('mockToken');
-      expect(TokenService.token).toEqual('mockToken');
+      OAuthToken.setToken('mockToken');
+      expect(OAuthToken.token).toEqual('mockToken');
     });
     it('should get a token', function () {
-      TokenService.setToken('token');
-      expect(TokenService.getToken()).toEqual('token');
+      OAuthToken.setToken('token');
+      expect(OAuthToken.getToken()).toEqual('token');
     });
   });
 }());

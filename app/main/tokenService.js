@@ -1,6 +1,6 @@
 (function () {
   'use strict';
-  function TokenService () {
+  function OAuthToken () {
     var token = null;
 
     function setToken (token) {
@@ -15,6 +15,16 @@
       getToken: getToken
     };
   }
+  function OAuth (OAuthToken) {
+    function request (config) {
+      config.headers['Authorization'] = 'Bearer ' + OAuthToken.getToken();
+      return config;
+    }
+    return {
+      request: request
+    };
+  }
   angular.module('app.oauth')
-    .factory('TokenService', TokenService);
+    .factory('OAuth', OAuth)
+    .factory('OAuthToken', OAuthToken);
 }());
