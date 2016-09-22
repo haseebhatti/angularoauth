@@ -15,5 +15,10 @@
       OAuthToken.setToken('token');
       expect(OAuthToken.getToken()).toEqual('token');
     });
+    it('should be able to remove a token', function () {
+      OAuthToken.setToken('token');
+      OAuthToken.removeToken();
+      expect(OAuthToken.getToken()).toEqual(null);
+    });
   });
 }());

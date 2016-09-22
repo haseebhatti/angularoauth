@@ -9,22 +9,17 @@
     function getToken () {
       return this.token;
     }
+    function removeToken () {
+      this.token = null;
+    }
     return {
       token: token,
       setToken: setToken,
-      getToken: getToken
-    };
-  }
-  function OAuth (OAuthToken) {
-    function request (config) {
-      config.headers['Authorization'] = 'Bearer ' + OAuthToken.getToken();
-      return config;
-    }
-    return {
-      request: request
+      getToken: getToken,
+      removeToken: removeToken
+
     };
   }
   angular.module('app.oauth')
-    .factory('OAuth', OAuth)
     .factory('OAuthToken', OAuthToken);
 }());
